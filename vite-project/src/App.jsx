@@ -9,7 +9,7 @@ function App() {
   const [savedTasks, setSavedTasks] = useState([])
   const [selectedTask, setSelectedTask] = useState(null)
   const [toDos, setToDos] = useState("")
-  const [allToDos, setAllToDos] = useState([])
+  const [allToDos, setAllToDos] = useState({})
   const [editing, setEditing] = useState(false)
 
   const handleOnKeyDown = (e) => {
@@ -38,8 +38,10 @@ function App() {
           editing={editing}
           setEditing={setEditing}
           toDos={toDos}
-          setToDos={setToDos}
           handleOnKeyDown={handleOnKeyDown}
+          allToDos={allToDos}
+          setAllToDos={setAllToDos}
+          setToDos={setToDos}
         />
         //TODO: dodaj vec stvari sem ko bos mel cajt
       }

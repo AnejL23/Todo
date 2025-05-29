@@ -64,7 +64,7 @@ export default function Navbar({ savedTasks, setSavedTasks, setSelectedTask }) {
         </button>
         <ul>
           {savedTasks.map((task, index) => (
-            <li className="flex items-center justify-between" key={index}>
+            <li onClick={() => setSelectedTask(task)} className="cursor-pointer flex items-center justify-between bg-gray-700 hover:bg-gray-500 p-2 rounded mb-2" key={index}>
               {editingIndex === index ? (
                 <input
                   type="text"
@@ -87,7 +87,7 @@ export default function Navbar({ savedTasks, setSavedTasks, setSelectedTask }) {
                   className="p-1 text-black rounded w-full"
                 />
               ) : (
-                <TaskFolder onClick={() => setSelectedTask(task)}>
+                <TaskFolder>
                   {task}
                 </TaskFolder>
               )}

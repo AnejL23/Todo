@@ -1,11 +1,12 @@
-export default function ToDos({ selectedTask, toDosList, setEditing, editing, toDos, setToDos, handleOnKeyDown }) {
+export default function ToDos({ selectedTask, toDosList, setEditing, editing, allToDos, toDos, setToDos ,setAllToDos, handleOnKeyDown }) {
 
-  //FIXME: moglo bi nekak tak delat to pizda ej
   const handleDelete = (index) => {
-    const updatedToDos = toDos.filter((_, i) => i !== index)
-    setToDos(updatedToDos)
+    const updatedToDos = allToDos[selectedTask].filter((_, i) => i !== index)
+    setAllToDos({
+      ...allToDos,
+      [selectedTask]: updatedToDos
+    })
   }
-
 
     return (
       <section className="ml-55 p-8 bg-gray-500 m-5 rounded h-full max-w-2xl">
@@ -19,10 +20,10 @@ export default function ToDos({ selectedTask, toDosList, setEditing, editing, to
           </button>
         </div>
         <div>
-          <ul className="pt-5 list-disc pl-5 text-white text-lg flex flex-col items-center justify-between">
+          <ul className="pt-5 list-none pl-5 text-white text-lg flex flex-col items-center justify-between">
             {toDosList.map((todo, index) => (
               <li key={index}>{todo}
-              <button onClick={() => handleDelete(index)} className="font-bold bg-green-500 p-1 rounded hover:bg-green-300">Delete</button>
+              <button onClick={() => handleDelete(index)} className="font-bold bg-green-500 p-1 rounded hover:bg-green-300 ml-70">Delete</button>
               </li>
             ))}
           </ul>
